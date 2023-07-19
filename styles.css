@@ -1,20 +1,39 @@
-CSS
-
 /* Globales */
+@import url('https://fonts.googleapis.com/css2?family=Mukta:wght@200;400;500;600;800&family=Original+Surfer&family=Ubuntu:ital,wght@0,300;0,400;0,700;1,400&display=swap');
 *::after,
 *::before,
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Original surfer';
 }
 
+header{
+    background: url(./img/header\ x.png);
+    background-size: cover;
+    background-position:center;
+    height: 150px;
+
+}
+
+header h1{
+    text-align: center;
+    font-size: 35px;
+    color: rgb(35, 15, 164);
+}
+.divh1{
+    text-align: center;
+    padding: 60px;
+    border: 0.5px #81ba10;
+}
 body{
     background-image: url(./img/arte\ surf\ \(4\).jpg);
     margin: 0 auto;
     max-width: 1200px;
     font-family: 'Lato';
     color: #333;
+ 
 }
 
 .icon-cart{
@@ -138,7 +157,31 @@ header{
     display: none;
 }
 
-
+/* TOASTIFY JS : Estilos para el botón "Total de Compra" */
+.btn {
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .color-arena {
+    background-color: #eae0b7; /* Color arena */
+    color: #0a2694; /* Texto en color negro */
+  }
+  
+  .color-azul-marino {
+    background-color: #170a8a; /* Color azul marino */
+    color: #fff; /* Texto en color blanco */
+  }
+  
+  /* Posición del botón */
+  #btnCierreCompra {
+    margin-top: 0px; /* Ajustar según tu preferencia */
+  }
+  
 
 
 /* Main */
@@ -203,3 +246,36 @@ header{
 .hidden{
     display: none;
 }
+
+footer {
+    background-color: #188dc8;
+    background:url(./img/footer\ 2.jpg);
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .footer-content {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align:initial
+  }
+  
+  .social-links a {
+    color: #333;
+    margin-right: 10px;
+  }
+  
+  #btn-scroll-top {
+    background-color: #333;
+    color: #c1e925;
+    border: none;
+    padding: 10px 20px;
+    margin-top: 10px;
+    cursor: pointer;
+  }
+  
+  #btn-scroll-top:hover {
+    background-color: #555;
+  }
+  
+  

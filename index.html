@@ -7,13 +7,21 @@
 			name="viewport"
 			content="width=device-width, initial-scale=1.0"
 		/>
-		<title>Carrito de Compras Surf</title>
 		<link rel="stylesheet" href="styles.css" />
+		<title>Carrito de Compras Surf</title>
+		<!-- Enlace al archivo de SweetAlert -->
+		<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.2/dist/sweetalert2.min.js"></script>
+		<!-- Enlace al archivo CSS de SweetAlert -->
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.2/dist/sweetalert2.min.css">
+		<!-- Incluye la librería ToastifyJS -->
+		<script src="https://cdn.jsdelivr.net/npm/toastify-js@1.11.0/dist/toastify.min.js"></script>
+
 	</head>
 	<body>
 		<header>
+			<div class="divh1">
 			<h1>¡Articulos para Mejorar tu Surf!</h1>
-
+			</div>
 			<div class="container-icon">
 				<div class="container-cart-icon">
 					<svg
@@ -32,6 +40,13 @@
 					</svg>
 					<div class="count-products">
 						<span id="contador-productos">0</span>
+						<div class="cart-total hidden">
+							<h3>Total:</h3>
+							<span class="total-pagar">$200</span>
+							<!-- Botón de Cierre de Compra -->
+							<button id="btnCierreCompra" class="btn btn-primary">Total de Compra</button>
+						</div>
+						
 					</div>
 				</div>
 
@@ -188,6 +203,21 @@
 			</div>
 		</div>
 
+		<footer>
+			<div class="footer-content">
+			  <p>Teléfono: +123456789</p>
+			  <div class="social-links">
+				<a href="#"><i class="fab fa-facebook"><p>Facebook</p></i></a>
+				<a href="#"><i class="fab fa-twitter"><p>Twitter</p></i></a>
+				<a href="#"><i class="fab fa-instagram"><p>Instagram</p></i></a>
+			  </div>
+			  <!-- Botón de volver arriba -->
+				<a href="#" class="btn btn-primary btn-floating btn-lg back-to-top" role="button" aria-label="Volver arriba">
+				<i class="fas fa-arrow-up"><p><strong>Volver Arriba</strong></p></i>
+				</a>
+			</div>
+		  </footer>
+		  
 		<script src="index.js"></script>
 	</body>
 </html>
