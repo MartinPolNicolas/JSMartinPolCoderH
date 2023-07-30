@@ -7,6 +7,7 @@ btnCart.addEventListener('click', () => {
 	containerCartProducts.classList.toggle('hidden-cart');
 });
 
+
 /* ========================= */
 const cartInfo = document.querySelector('.cart-product');
 const rowProduct = document.querySelector('.row-product');
@@ -51,7 +52,7 @@ productsList.addEventListener('click', e => {
 		} else {
 			allProducts = [...allProducts, infoProduct];
 		}
-
+		
 		showHTML();
 		productsList.addEventListener('click', e => {
 			if (e.target.classList.contains('btn-add-cart')) {
@@ -80,6 +81,7 @@ productsList.addEventListener('click', e => {
 				} else {
 					allProducts = [...allProducts, infoProduct];
 				}
+				
 		
 				// Muestra SweetAlert para confirmar el agregado al carrito con el nombre del producto
 				Swal.fire({
@@ -88,11 +90,11 @@ productsList.addEventListener('click', e => {
 					icon: 'success',
 					confirmButtonText: 'Aceptar',
 				});
+				
 		
 				showHTML();
 				const showHTML = () => {
-					// ... (código existente)
-				  
+									  
 					if (!allProducts.length) {
 					  cartEmpty.classList.remove('hidden');
 					  rowProduct.classList.add('hidden');
@@ -101,20 +103,23 @@ productsList.addEventListener('click', e => {
 					  cartEmpty.classList.add('hidden');
 					  rowProduct.classList.remove('hidden');
 					  cartTotal.classList.remove('hidden');
-					
-					  // MEJORAR UBICACION DEL TEXTO Mostrar mensaje Toastify
+					  
+					  
+
+					  // Mostrar mensaje Toastify
 					  Toastify({
 						text: 'Has agregado un producto al carrito de compras.',
 						duration: 5000,
 						newWindow: true,
 						close: true,
-						gravity: 'top', // Puedes cambiar la posición del mensaje (top, bottom, left, right)
+						gravity: 'right', // Puedes cambiar la posición del mensaje (top, bottom, left, right)
 						position: 'center', // Puedes cambiar la posición del mensaje (top, bottom, center, left, right)
-						backgroundColor: 'linear-gradient(to right, #00b09c, #96c93d)', // Puedes cambiar el color de fondo del mensaje
+						backgroundColor: 'blue', // Cambiar el color de fondo a azul
+						className: 'toastify-text-white', // Agregar una clase para que el texto sea blanco
 					  }).showToast();
+					  
+					  
 					}
-				  
-					// ... (código existente)
 				  };
 				  
 			}
@@ -122,6 +127,40 @@ productsList.addEventListener('click', e => {
 		
 	}
 });
+
+// Evento que se ejecuta al cargar la página para cargar los productos del carrito desde el Web Storage (si existen)
+document.addEventListener('DOMContentLoaded', () => {
+	loadCartProducts();
+	showHTML(); // Llamamos a showHTML() también aquí para que se actualice el número al cargar la página
+  
+});
+  
+  productsList.addEventListener('click', e => {
+	if (e.target.classList.contains('btn-add-cart')) {
+	  // ... (Código para agregar un producto al carrito)
+	  // showHTML(); // Eliminamos esta llamada a showHTML() de aquí
+	}
+  });
+  
+// Función para guardar los productos del carrito en el Web Storage
+const saveCartProducts = () => {
+	localStorage.setItem('cartProducts', JSON.stringify(allProducts));
+};
+
+// Función para cargar los productos del carrito desde el Web Storage
+const loadCartProducts = () => {
+	const savedCartProducts = localStorage.getItem('cartProducts');
+	if (savedCartProducts) {
+		allProducts = JSON.parse(savedCartProducts);
+		showHTML();
+	}
+};
+
+// Evento que se ejecuta al cargar la página para cargar los productos del carrito desde el Web Storage (si existen)
+document.addEventListener('DOMContentLoaded', () => {
+	loadCartProducts();
+});
+
 
 rowProduct.addEventListener('click', e => {
 	if (e.target.classList.contains('icon-close')) {
