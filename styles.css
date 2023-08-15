@@ -38,23 +38,35 @@ body{
     color:  #FFD700;
  
 }
+.container-search{
+    width: 40px;
+    height: 40px;
+    color: #000000;
+    stroke:  #0d0d0d;
+    background-color:#ffffff00;
+    margin-left: 700px;
+    align-items: right;
+    position: sticky;
+    margin-top: 120px; 
+}
 
 .icon-cart{
 
     width: 40px;
     height: 40px;
     stroke:  #0d0d0d;
-    background-color:#ffffff00;
-    margin-left: 200px;
+    background-color:#00000000;
+    margin-left: 150px;
     align-items: center;
     position: sticky;
-    margin-top: 10px; 
+    margin-top: 50px; 
 }
 
 .icon-cart:hover{
     cursor: pointer;
-    float: right;
-    margin-right: 1px;
+    float:none;
+    margin-right: 0px;
+    margin-top: 50px;
 }
 
 img{
@@ -73,6 +85,7 @@ header{
     order: 18;
     margin-left: 50px;
     margin-top: 10px !important;
+    color: #000000;
 }
 
 /* Circulo donde se muestran la cantidad de items agregados al carrito */
@@ -179,6 +192,7 @@ header{
 
 /* Boton de Volver Arriba */
 .btn {
+    color: #000000;
     text-align: center;
     padding: 10px 20px;
     border-radius: 5px;
@@ -261,7 +275,8 @@ header{
 }
 /*FOOTER*/
 footer {
-    background-color: #1a8d9c;
+    background-color: #080808;
+    color: #000000;
     background-image: url(./img/footer\ js\ 2.jpg);
     background-size: cover; /* La imagen de fondo ocupará todo el espacio del footer */
     background-position: center; /* Centra verticalmente la imagen de fondo */
@@ -274,6 +289,7 @@ footer {
     margin: 0 auto;
     text-align:initial
     
+    
   }
 
   .social-links {
@@ -283,13 +299,13 @@ footer {
 }
   
   .social-links a {
-    color: #333;
+    color: #040404;
     font-size: 24px;
     transition: color 0.3s;
   }
   
   .social-links a:hover {
-    color: #188dc8; /* Cambiar el color al colocar el cursor */
+    color: #0096c4; /* Cambiar el color al colocar el cursor */
 }
 h5 {
     color: #170a8a;

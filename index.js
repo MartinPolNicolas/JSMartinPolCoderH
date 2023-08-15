@@ -1,183 +1,98 @@
 const btnCart = document.querySelector('.container-cart-icon');
-const containerCartProducts = document.querySelector(
-	'.container-cart-products'
-);
+const containerCartProducts = document.querySelector('.container-cart-products');
 
 btnCart.addEventListener('click', () => {
 	containerCartProducts.classList.toggle('hidden-cart');
 });
 
-
 /* ========================= */
 const cartInfo = document.querySelector('.cart-product');
 const rowProduct = document.querySelector('.row-product');
-
-// Lista de todos los contenedores de productos
 const productsList = document.querySelector('.container-items');
 
-// Variable de arreglos de Productos
 let allProducts = [];
+let total = 0;
+let totalOfProducts = 0;
 
 const valorTotal = document.querySelector('.total-pagar');
-
 const countProducts = document.querySelector('#contador-productos');
-
 const cartEmpty = document.querySelector('.cart-empty');
 const cartTotal = document.querySelector('.cart-total');
+
+// Cargar los productos del carrito desde el Local Storage al cargar la página
+document.addEventListener('DOMContentLoaded', () => {
+	loadCartProducts();
+	showHTML();
+});
 
 productsList.addEventListener('click', e => {
 	if (e.target.classList.contains('btn-add-cart')) {
 		const product = e.target.parentElement;
-
 		const infoProduct = {
 			quantity: 1,
 			title: product.querySelector('h2').textContent,
 			price: product.querySelector('p').textContent,
 		};
-
-		const exits = allProducts.some(
-			product => product.title === infoProduct.title
-		);
-
-		if (exits) {
-			const products = allProducts.map(product => {
-				if (product.title === infoProduct.title) {
-					product.quantity++;
-					return product;
-				} else {
-					return product;
-				}
-			});
-			allProducts = [...products];
-		} else {
-			allProducts = [...allProducts, infoProduct];
-		}
-		
+		addToCart(infoProduct);
+		saveCartProducts();
 		showHTML();
-		productsList.addEventListener('click', e => {
-			if (e.target.classList.contains('btn-add-cart')) {
-				const product = e.target.parentElement;
-		
-				const infoProduct = {
-					quantity: 2,
-					title: product.querySelector('h2').textContent,
-					price: product.querySelector('p').textContent,
-				};
-		
-				const exits = allProducts.some(
-					product => product.title === infoProduct.title
-				);
-		
-				if (exits) {
-					const products = allProducts.map(product => {
-						if (product.title === infoProduct.title) {
-							product.quantity;
-							return product;
-						} else {
-							return product;
-						}
-					});
-					allProducts = [...products];
-				} else {
-					allProducts = [...allProducts, infoProduct];
-				}
-				
-		
-				// Muestra SweetAlert para confirmar el agregado al carrito con el nombre del producto
-				Swal.fire({
-					title: 'Producto agregado al carrito',
-					text: `Has agregado 1 ${infoProduct.title} al carrito de compras.`,
-					icon: 'success',
-					confirmButtonText: 'Aceptar',
-				});
-				
-		
-				showHTML();
-				const showHTML = () => {
-									  
-					if (!allProducts.length) {
-					  cartEmpty.classList.remove('hidden');
-					  rowProduct.classList.add('hidden');
-					  cartTotal.classList.add('hidden');
-					} else {
-					  cartEmpty.classList.add('hidden');
-					  rowProduct.classList.remove('hidden');
-					  cartTotal.classList.remove('hidden');
-					  
-					  
 
-					  // Mostrar mensaje Toastify
-					  Toastify({
-						text: 'Has agregado un producto al carrito de compras.',
-						duration: 5000,
-						newWindow: true,
-						close: true,
-						gravity: 'right', // Puedes cambiar la posición del mensaje (top, bottom, left, right)
-						position: 'center', // Puedes cambiar la posición del mensaje (top, bottom, center, left, right)
-						backgroundColor: 'blue', // Cambiar el color de fondo a azul
-						className: 'toastify-text-white', // Agregar una clase para que el texto sea blanco
-					  }).showToast();
-					  
-					  
-					}
-				  };
-				  
-			}
+		// Muestra SweetAlert para confirmar el agregado al carrito con el nombre del producto
+		Swal.fire({
+			title: 'Producto agregado al carrito',
+			text: `Has agregado 1 ${infoProduct.title} al carrito de compras.`,
+			icon: 'success',
+			confirmButtonText: 'Aceptar',
 		});
-		
 	}
 });
-
-// Evento que se ejecuta al cargar la página para cargar los productos del carrito desde el Web Storage (si existen)
-document.addEventListener('DOMContentLoaded', () => {
-	loadCartProducts();
-	showHTML(); // Llamamos a showHTML() también aquí para que se actualice el número al cargar la página
-  
-});
-  
-  productsList.addEventListener('click', e => {
-	if (e.target.classList.contains('btn-add-cart')) {
-	  // ... (Código para agregar un producto al carrito)
-	  // showHTML(); // Eliminamos esta llamada a showHTML() de aquí
-	}
-  });
-  
-// Función para guardar los productos del carrito en el Web Storage
-const saveCartProducts = () => {
-	localStorage.setItem('cartProducts', JSON.stringify(allProducts));
-};
-
-// Función para cargar los productos del carrito desde el Web Storage
-const loadCartProducts = () => {
-	const savedCartProducts = localStorage.getItem('cartProducts');
-	if (savedCartProducts) {
-		allProducts = JSON.parse(savedCartProducts);
-		showHTML();
-	}
-};
-
-// Evento que se ejecuta al cargar la página para cargar los productos del carrito desde el Web Storage (si existen)
-document.addEventListener('DOMContentLoaded', () => {
-	loadCartProducts();
-});
-
 
 rowProduct.addEventListener('click', e => {
 	if (e.target.classList.contains('icon-close')) {
 		const product = e.target.parentElement;
 		const title = product.querySelector('p').textContent;
-
-		allProducts = allProducts.filter(
-			product => product.title !== title
-		);
-
-		console.log(allProducts);
-
+		removeFromCart(title);
+		saveCartProducts();
 		showHTML();
 	}
 });
 
-// Funcion para mostrar  HTML
+// Agregar un producto al carrito
+const addToCart = product => {
+	const exists = allProducts.some(prod => prod.title === product.title);
+	if (exists) {
+		allProducts = allProducts.map(prod => {
+			if (prod.title === product.title) {
+				prod.quantity++;
+				return prod;
+			} else {
+				return prod;
+			}
+		});
+	} else {
+		allProducts = [...allProducts, product];
+	}
+};
+
+// Remover un producto del carrito
+const removeFromCart = title => {
+	allProducts = allProducts.filter(prod => prod.title !== title);
+};
+
+// Función para guardar los productos del carrito en el Local Storage
+const saveCartProducts = () => {
+	localStorage.setItem('cartProducts', JSON.stringify(allProducts));
+};
+
+// Función para cargar los productos del carrito desde el Local Storage
+const loadCartProducts = () => {
+	const savedCartProducts = localStorage.getItem('cartProducts');
+	if (savedCartProducts) {
+		allProducts = JSON.parse(savedCartProducts);
+	}
+};
+
+// Función para mostrar el HTML del carrito
 const showHTML = () => {
 	if (!allProducts.length) {
 		cartEmpty.classList.remove('hidden');
@@ -189,11 +104,10 @@ const showHTML = () => {
 		cartTotal.classList.remove('hidden');
 	}
 
-	// Limpiar HTML
 	rowProduct.innerHTML = '';
 
-	let total = 0;
-	let totalOfProducts = 0;
+	total = 0;
+	totalOfProducts = 0;
 
 	allProducts.forEach(product => {
 		const containerProduct = document.createElement('div');
@@ -222,11 +136,18 @@ const showHTML = () => {
 
 		rowProduct.append(containerProduct);
 
-		total =
-			total + parseInt(product.quantity * product.price.slice(1));
+		total = total + parseInt(product.quantity * product.price.slice(1));
 		totalOfProducts = totalOfProducts + product.quantity;
 	});
 
 	valorTotal.innerText = `$${total}`;
 	countProducts.innerText = totalOfProducts;
 };
+
+// Consumir una API o JSON (En mi caso JSON)
+fetch('productos.json')
+	.then(response => response.json())
+	.then(data => {
+		// Aquí puedes procesar los datos de la API o JSON
+	})
+	.catch(error => console.error('Error fetching data:', error));

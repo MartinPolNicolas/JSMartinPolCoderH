@@ -1,0 +1,58 @@
+[
+    {
+      "id": 1,
+      "title": "Tabla de Surf Funboard",
+      "price": 100000,
+      "image": "./img/tabla de surf.png"
+    },
+    {
+      "id": 2,
+      "title": "Parafina",
+      "price": 1500,
+      "image": "./img/parafina surf.png"
+    },
+    {
+        "id": 3,
+        "title": "Raspador",
+        "price": 1000,
+        "image": "./img/raspador.png"
+      },
+    {
+        "id": 4,
+        "title": "Poncho Cambiador",
+        "price": 30000,
+        "image": "./img/poncho cambiador surf.png"
+      },
+    {
+        "id": 5,
+        "title": "Botas Neoprene",
+        "price": 50000,
+        "image": "./img/Botas neoprene.png"
+      },
+    {
+        "id": 6 ,
+        "title": "Traje Neoprene 4'3'",
+        "price": 120000,
+        "image": "./img/Traje Neoprene 4.png"
+      },
+      {
+        "id": 7 ,
+        "title": "Quillas",
+        "price": 12000,
+        "image": "./img/quillas.png"
+      },
+      {
+        "id": 8 ,
+        "title": "Grip",
+        "price": 7000,
+        "image": "./img/grip surf.png"
+      },
+      {
+        "id": 8 ,
+        "title": "Traje Neoprene 3'2'",
+        "price": 110000,
+        "image": ".//img/Traje neoprene 3.png"
+      }
+  
+  ]
+  

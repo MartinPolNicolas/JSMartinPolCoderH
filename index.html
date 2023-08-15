@@ -9,12 +9,17 @@
 		/>
 		<link rel="stylesheet" href="styles.css" />
 		<title>Carrito de Compras Surf</title>
-		<!-- Enlace al archivo de SweetAlert -->
+		<!-- Enlace a la librería JS Font Awesome -->
+		<script src="https://kit.fontawesome.com/696e17386f.js" crossorigin="anonymous"></script>
+		<!-- Enlace a la librería Font Awesome -->
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" crossorigin="anonymous" referrerpolicy="no-referrer" />
+		<!-- Enlace al archivo de SweetAlert2 -->
 		<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.2/dist/sweetalert2.min.js"></script>
-		<!-- Enlace al archivo CSS de SweetAlert -->
+		<!-- Enlace al archivo CSS de SweetAlert2 -->
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.2/dist/sweetalert2.min.css">
 		<!-- Incluye la librería ToastifyJS -->
 		<script src="https://cdn.jsdelivr.net/npm/toastify-js@1.11.0/dist/toastify.min.js"></script>
+
 
 	</head>
 	<body>
@@ -22,12 +27,14 @@
 			<div class="divh1">
 			<h1>¡Bienvenido a Surf Shop!</h1>
 			</div>
-			<div class="container-search">
+				<div class="container-search">
+				<h3>Buscador</h3>
 				<input type="text" class="search-input" placeholder="Buscar productos en el carrito">
+				
 			  </div>
 			<div class="container-icon">
 				<div class="container-cart-icon">
-					<svg
+						<svg
 						xmlns="http://www.w3.org/2000/svg"
 						fill="none"
 						viewBox="0 0 24 24"
@@ -40,12 +47,11 @@
 							stroke-linejoin="round"
 							d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"
 						/>
+						<h3>Cantidad de Productos</h3>
 					</svg>
 					<div class="count-products">
 						<span id="contador-productos">0</span>
 						<div class="cart-total hidden">
-							<h3>Total:</h3>
-							<span class="total-pagar">$200</span>
 							<!-- Botón de Cierre de Compra -->
 							<button id="btnCierreCompra" class="btn btn-primary">Total de Compra</button>
 						</div>
@@ -148,7 +154,7 @@
 				</figure>
 				<div class="info-product">
 					<h2>Botas Neoprene</h2>
-					<p class="price">$100000</p>
+					<p class="price">$50000</p>
 					<button class="btn-add-cart">Añadir al carrito</button>
 				</div>
 			</div>
@@ -200,7 +206,7 @@
 				</figure>
 				<div class="info-product">
 					<h2>Traje Neoprene 3'2'</h2>
-					<p class="price">$11000</p>
+					<p class="price">$110000</p>
 					<button class="btn-add-cart">Añadir al carrito</button>
 				</div>
 			</div>
@@ -209,22 +215,27 @@
 		<footer>
 			<div class="col-md-6">
 				<h5>Contacto</h5>
-				<p><a href="http://www.whatsapp.com/?lang=es"> 
-					<i class=""fab fa-whatsapp" aria-hidden="true">Habla con Nosotros por Whatsapp! </i>
-				</a>
+				<p>
+					<a href="http://www.whatsapp.com/?lang=es" target="_blank"> 
+						<i class="fab fa-whatsapp" aria-hidden="true" class="fab fa-whatsapp" style="color: #6bc115;"></i>></i>Habla con Nosotros por Whatsapp!
+					</a>
 				</p>
-			  <div class="social-links">
-				<a class="facebook" href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook"><p>Facebook</p></i></a>
-				<a href="#"><i class="fab fa-twitter"><p>Twitter</p></i></a>
-				<a href="#"><i class="fab fa-instagram"><p>Instagram</p></i></a>
-			  </div>
-			  <!-- Botón de volver arriba -->
+				<div class="social-links">
+					<a class="facebook" href="https://www.facebook.com/" target="_blank">
+						<i class="fab fa-facebook"></i><p>Facebook</p>
+					</a>
+					<a href="https://www.twitter.com/" target="_blank">
+						<i class="fab fa-twitter"></i><p>Twitter</p>
+					</a>
+					<a href="https://www.instagram.com/" target="_blank">
+						<i class="fab fa-instagram"></i><p>Instagram</p>
+					</a>
+				</div>
+				<!-- Botón de volver arriba -->
 				<a href="#" class="btn btn-primary btn-floating btn-lg back-to-top" role="button" aria-label="Volver arriba">
-				<i class="fas fa-arrow-up"><p><strong>Volver Arriba </strong></p></i>
+					<i class="fas fa-arrow-up"></i><p><strong>Inicio </strong></p>
 				</a>
 			</div>
-		  </footer>
-		  
 		<script src="index.js"></script>
 	</body>
 </html>
